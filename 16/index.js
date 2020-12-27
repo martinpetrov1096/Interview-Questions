@@ -25,28 +25,25 @@ function threeSumClosest(nums, target) {
                 continue;
             }
             const curSum = closestSum(sortedNums, target, num1, num2, i, j);
-            //   console.log(Math.abs(curSum - target) < Math.abs(bestSum - target));
-            // console.log(curSum);
             if (Math.abs(curSum - target) < Math.abs(bestSum - target)) {
                 bestSum = curSum;
             }
         }
     }
     return bestSum;
-}
-;
+};
 function closestSum(sortedNums, target, num1, num2, i, j) {
     /* num3Target represents the ideal number */
     let num3Target = target - num1 - num2;
-    let curNum = sortedNums[getRandIdx(i, j, sortedNums.length)];
+    /* Randomly set num3 to be a certain value */
+    let num3 = sortedNums[getRandIdx(i, j, sortedNums.length)];
     let l = 0;
     let r = sortedNums.length - 1;
     let m;
     while (l <= r) {
         m = Math.floor((l + r) / 2);
-        console.log('l: ' + l + ' r: ' + r + ' m ' + m);
-        if (Math.abs(sortedNums[m] - num3Target) < Math.abs(curNum - num3Target) && m != i && m != j) {
-            curNum = sortedNums[m];
+        if (Math.abs(sortedNums[m] - num3Target) < Math.abs(num3 - num3Target) && m != i && m != j) {
+            num3 = sortedNums[m];
         }
         if (sortedNums[m] < num3Target) {
             l = m + 1;
@@ -57,10 +54,8 @@ function closestSum(sortedNums, target, num1, num2, i, j) {
             console.log('hey');
         }
     }
-    let num3 = curNum;
-    const sum = num1 + num2 + num3;
-    // console.log('num1: ' + num1 + ' num2: ' + num2 + ' target: ' + target + ' num3Target: ' + num3Target + ' num3: ' + num3 + ' sum: ' + sum);
-    return sum;
+    return num1 + num2 + num3;
+    ;
 }
 function getRandIdx(i, j, size) {
     let curIdx;
