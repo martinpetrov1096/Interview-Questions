@@ -4,7 +4,7 @@
  * 
  * Misunderstood, so new times: 
  * Time Started Coding: 8:03pm
- * Time Finished: 
+ * Time Finished: 9:15pm
  * Time Optimized:
  * 
  Do not return anything, modify nums in-place instead.
@@ -35,7 +35,6 @@ function nextPermutation(nums: number[]): void {
          nextBiggestLoc = i;
       }
    }
-  // console.log(nextBiggestLoc)
 
 
    let tmp = nums[firstDecLoc];
@@ -43,7 +42,6 @@ function nextPermutation(nums: number[]): void {
    nums[nextBiggestLoc] = tmp;
 
    sort(nums, firstDecLoc+1);
-//   console.log(nums);
 };
 
 function sort(nums: Array<number>, j) {
